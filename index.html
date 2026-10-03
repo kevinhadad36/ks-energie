@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KS Energie — Chauffage, climatisation & plomberie | Labarthe-sur-Lèze</title>
+<meta name="description" content="KS Energie installe, répare et entretient vos systèmes de chauffage, de climatisation et de plomberie à Labarthe-sur-Lèze et dans le Sud toulousain. Devis gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette — d'après le système "electric monolith" */
+    --solar:#ffac00;      /* unique accent d'action */
+    --canyon:#e84826;     /* décor chaud (chauffage) */
+    --sky:#77afd8;        /* décor froid (clim) */
+    --forest:#629b5c;     /* tags */
+    --black:#000;
+    --graphite:#151515;
+    --charcoal:#212121;
+    --steel:#616161;
+    --slate:#9fa1b8;
+    --fog:#b8b8b8;
+    --ash:#cfd0d0;
+    --concrete:#e5e7eb;
+    --chalk:#f2f2f2;
+    --paper:#fff;
+
+    --r-input:4px; --r-icon:8px; --r-nav:12px; --r-card:20px; --r-btn:40px; --r-pill:9999px;
+    --max:1440px;
+    --gutter:clamp(16px,4vw,56px);
+    --section:clamp(56px,8vw,112px);
+    --font:"Inter Tight","Inter","Helvetica Neue",Arial,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);background:var(--paper);color:var(--graphite);
+    font-size:16px;line-height:1.5;letter-spacing:-.01em;
+    -webkit-font-smoothing:antialiased;font-feature-settings:"liga" 0,"clig" 0;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+
+  /* ---------- Type scale ---------- */
+  .display-lg{font-size:clamp(56px,10vw,120px);line-height:1;letter-spacing:-.045em;font-weight:500}
+  .display{font-size:clamp(44px,6vw,72px);line-height:1.06;letter-spacing:-.042em;font-weight:500}
+  .h-xl{font-size:clamp(36px,4.6vw,56px);line-height:1.1;letter-spacing:-.036em;font-weight:500}
+  .h-lg{font-size:clamp(30px,3.6vw,44px);line-height:1.14;letter-spacing:-.031em;font-weight:500}
+  .h-sm{font-size:24px;line-height:1.25;letter-spacing:-.02em;font-weight:500}
+  .sub{font-size:20px;line-height:1.4;letter-spacing:-.01em}
+  .body{font-size:16px;line-height:1.55;color:var(--steel)}
+  .caption{font-size:12px;line-height:1.33;font-weight:500;letter-spacing:.02em;text-transform:uppercase}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--r-btn);
+    font:500 14px/1.2 var(--font);letter-spacing:-.01em;border:1px solid transparent;cursor:pointer;
+    transition:background .2s,color .2s,border-color .2s,transform .2s}
+  .btn:active{transform:scale(.98)}
+  .btn-solar{background:var(--solar);color:var(--graphite)}
+  .btn-solar:hover{background:#ffbb2e}
+  .btn-dark{background:var(--graphite);color:#fff}
+  .btn-dark:hover{background:#2c2c2c}
+  .btn-light{background:var(--concrete);color:var(--graphite)}
+  .btn-light:hover{background:var(--ash)}
+  .btn-ghost-w{border-color:#fff;color:#fff;background:transparent}
+  .btn-ghost-w:hover{background:#fff;color:var(--graphite)}
+  .btn-ghost-d{border-color:var(--graphite);color:var(--graphite);background:transparent}
+  .btn-ghost-d:hover{background:var(--graphite);color:#fff}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--r-pill);
+    font-size:12px;font-weight:500;background:var(--chalk);color:var(--graphite)}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+  /* ---------- Nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+    backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--concrete)}
+  .nav-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;letter-spacing:-.03em}
+  .logo-mark{width:32px;height:32px;border-radius:var(--r-icon);background:var(--graphite);color:#fff;
+    display:grid;place-items:center;font-size:13px;font-weight:600;letter-spacing:-.04em}
+  .nav-links{display:flex;gap:4px}
+  .nav-links a{padding:8px 16px;border-radius:var(--r-pill);font-size:14px;font-weight:500;color:var(--steel);transition:.2s}
+  .nav-links a:hover{background:var(--chalk);color:var(--graphite)}
+  .nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+  .nav-tel{font-size:14px;font-weight:500;padding:8px 12px;border-radius:var(--r-pill)}
+  .nav-tel:hover{background:var(--chalk)}
+  .burger{display:none;width:40px;height:40px;border-radius:var(--r-pill);border:1px solid var(--concrete);background:#fff;cursor:pointer}
+  .burger span{display:block;width:16px;height:1.5px;background:var(--graphite);margin:4px auto}
+  .mobile-menu{display:none;border-top:1px solid var(--concrete);padding:8px var(--gutter) 16px}
+  .mobile-menu a{display:block;padding:14px 0;border-bottom:1px solid var(--concrete);font-size:18px;font-weight:500}
+  .mobile-menu.open{display:block}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:calc(100svh - 64px);display:flex;align-items:flex-end;color:#fff;background:var(--charcoal);overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.65) 100%)}
+  .hero-in{position:relative;z-index:1;width:100%;padding-bottom:clamp(40px,6vw,80px)}
+  .hero .caption{color:rgba(255,255,255,.8);margin-bottom:16px}
+  .hero h1{max-width:12ch}
+  .hero-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:32px}
+  .hero-foot p{max-width:440px;font-size:18px;line-height:1.5;color:rgba(255,255,255,.85)}
+  .hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+  /* ---------- Monogram ---------- */
+  .mono{background:var(--chalk);padding:var(--section) 0 0;text-align:center;overflow:hidden}
+  .mono-word{font-size:clamp(140px,30vw,360px);line-height:.82;letter-spacing:-.06em;font-weight:600;color:var(--graphite);
+    user-select:none;margin-top:8px}
+  .mono-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:24px}
+  .mono p.sub{max-width:640px;margin:0 auto;color:var(--steel)}
+  .mono-actions{display:flex;justify-content:center;gap:8px;margin:32px 0 var(--section)}
+  .mono-img{margin:0 var(--gutter);border-radius:var(--r-card) var(--r-card) 0 0;overflow:hidden;max-width:var(--max);margin-inline:auto;height:clamp(220px,40vw,520px)}
+  .mono-img img{width:100%;height:100%;object-fit:cover}
+
+  /* ---------- Section head ---------- */
+  section{scroll-margin-top:64px}
+  .sec{padding:var(--section) 0}
+  .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px}
+  .sec-head .caption{color:var(--steel);margin-bottom:12px}
+  .sec-head p{max-width:420px}
+
+  /* ---------- Services (full-bleed tiles) ---------- */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .svc{position:relative;border-radius:var(--r-card);overflow:hidden;min-height:560px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:24px;background:var(--charcoal)}
+  .svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .svc:hover img{transform:scale(1.04)}
+  .svc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 30%,rgba(0,0,0,.75))}
+  .svc>*{position:relative;z-index:1}
+  .svc-top{display:flex;justify-content:space-between;align-items:center}
+  .svc-top .chip{background:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(8px)}
+  .svc-n{font-size:14px;font-weight:500;opacity:.8}
+  .svc h3{font-size:clamp(32px,3.2vw,44px);line-height:1.05;letter-spacing:-.035em;font-weight:500;margin-bottom:12px}
+  .svc ul{list-style:none;display:grid;gap:6px;font-size:15px;color:rgba(255,255,255,.88);margin-bottom:20px}
+  .svc li::before{content:"—";margin-right:8px;opacity:.6}
+
+  /* ---------- Specs strip ---------- */
+  .specs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--concrete)}
+  .spec{padding:32px 24px 0 0}
+  .spec+.spec{padding-left:24px;border-left:1px solid var(--concrete)}
+  .spec-v{font-size:clamp(40px,4.6vw,56px);line-height:1;letter-spacing:-.04em;font-weight:500}
+  .spec-v small{font-size:.45em;letter-spacing:-.02em;margin-left:4px;color:var(--steel)}
+  .spec-l{margin-top:12px;font-size:14px;color:var(--steel);max-width:220px}
+
+  /* ---------- Split feature ---------- */
+  .split{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
+  .split-img{border-radius:var(--r-card);overflow:hidden;aspect-ratio:4/5;background:var(--ash)}
+  .split-img img{width:100%;height:100%;object-fit:cover}
+  .split .caption{color:var(--steel);margin-bottom:16px}
+  .split .body{margin:24px 0 32px;max-width:520px}
+  .checks{list-style:none;display:grid;gap:0;border-top:1px solid var(--concrete);margin-bottom:32px}
+  .checks li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--concrete);font-size:16px}
+  .checks b{font-weight:500;min-width:28px;color:var(--fog)}
+
+  /* ---------- Full-bleed quote band ---------- */
+  .band{position:relative;min-height:80vh;display:flex;align-items:center;color:#fff;background:var(--charcoal);overflow:hidden}
+  .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .band::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+  .band .wrap{position:relative;z-index:1;width:100%}
+  .band p.sub{max-width:520px;margin-top:24px;color:rgba(255,255,255,.85)}
+
+  /* ---------- Process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .step{background:var(--paper);border-radius:var(--r-card);padding:24px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+  .step-n{width:40px;height:40px;border-radius:var(--r-pill);border:1px solid var(--concrete);display:grid;place-items:center;font-size:14px;font-weight:500}
+  .step h4{font-size:24px;line-height:1.2;letter-spacing:-.02em;font-weight:500;margin:32px 0 8px}
+  .step p{font-size:14px;color:var(--steel);line-height:1.55}
+
+  /* ---------- Zone ---------- */
+  .zone{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .zone-map{background:var(--graphite);border-radius:var(--r-card);color:#fff;padding:32px;min-height:440px;position:relative;overflow:hidden}
+  .zone-map svg{position:absolute;inset:0;width:100%;height:100%}
+  .zone-map .caption{position:relative;color:var(--fog)}
+  .zone-map .h-lg{position:relative;margin-top:12px;max-width:12ch}
+  .zone-list{border-radius:var(--r-card);border:1px solid var(--concrete);padding:32px;display:flex;flex-direction:column;justify-content:space-between}
+  .towns{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+  .towns .chip{font-size:14px;padding:8px 16px}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:920px}
+  details{border-bottom:1px solid var(--concrete)}
+  details:first-of-type{border-top:1px solid var(--concrete)}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:20px;letter-spacing:-.015em;font-weight:500}
+  summary::-webkit-details-marker{display:none}
+  summary .pm{flex:none;width:32px;height:32px;border-radius:var(--r-pill);background:var(--chalk);display:grid;place-items:center;transition:transform .25s}
+  details[open] summary .pm{transform:rotate(45deg)}
+  details p{padding:0 56px 24px 0;color:var(--steel);max-width:720px}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--graphite);color:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+  .contact .caption{color:var(--fog);margin-bottom:16px}
+  .contact-lines{margin-top:40px;display:grid;border-top:1px solid #2c2c2c}
+  .contact-lines a,.contact-lines div{display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-bottom:1px solid #2c2c2c;font-size:18px}
+  .contact-lines span{color:var(--fog);font-size:14px}
+  .contact-lines a:hover{color:var(--solar)}
+  form{display:grid;gap:12px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{display:grid;gap:6px;font-size:12px;font-weight:500;color:var(--fog)}
+  input,select,textarea{font:400 16px/1.4 var(--font);color:#fff;background:var(--charcoal);border:1px solid #2f2f2f;
+    border-radius:var(--r-input);padding:14px 16px;outline:none;transition:border-color .2s;width:100%}
+  input:focus,select:focus,textarea:focus{border-color:var(--fog)}
+  textarea{min-height:120px;resize:vertical}
+  .need{display:flex;gap:8px;flex-wrap:wrap}
+  .need input{position:absolute;opacity:0;pointer-events:none}
+  .need label{display:inline-flex;padding:8px 16px;border-radius:var(--r-pill);border:1px solid #3a3a3a;font-size:14px;color:#fff;cursor:pointer;transition:.2s}
+  .need input:checked+label{background:#fff;color:var(--graphite);border-color:#fff}
+  .form-note{font-size:12px;color:var(--steel);margin-top:4px}
+  .sent{display:none;padding:16px;border-radius:var(--r-nav);background:var(--charcoal);font-size:14px}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--black);color:var(--fog);padding:56px 0 32px;font-size:14px}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px;padding-bottom:40px;border-bottom:1px solid #222}
+  .foot-top .logo{color:#fff}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-cols h5{font-size:12px;font-weight:500;color:#fff;margin-bottom:12px;letter-spacing:.02em;text-transform:uppercase}
+  .foot-cols a{display:block;padding:4px 0}
+  .foot-cols a:hover{color:#fff}
+  .foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;font-size:12px;color:var(--steel)}
+
+  /* ---------- Reveal ---------- */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1080px){
+    .services{grid-template-columns:1fr}
+    .svc{min-height:440px}
+    .steps{grid-template-columns:1fr 1fr}
+    .specs{grid-template-columns:1fr 1fr}
+    .spec:nth-child(3){padding-left:0;border-left:0}
+  }
+  @media (max-width:860px){
+    .nav-in{grid-template-columns:1fr auto}
+    .nav-links,.nav-tel,.nav-right .btn{display:none}
+    .burger{display:block}
+    .split,.zone,.contact-grid{grid-template-columns:1fr}
+    .split-img{aspect-ratio:4/3}
+  }
+  @media (max-width:560px){
+    .steps,.row{grid-template-columns:1fr}
+    .specs{grid-template-columns:1fr}
+    .spec,.spec+.spec{padding:24px 0;border-left:0;border-bottom:1px solid var(--concrete)}
+    .hero-actions .btn{flex:1;justify-content:center}
+    details p{padding-right:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="logo" aria-label="KS Energie, accueil">
+      <span class="logo-mark">KS</span> KS Energie
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#services">Services</a>
+      <a href="#methode">Méthode</a>
+      <a href="#zone">Zone</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:+33980803807">09 80 80 38 07</a>
+      <a class="btn btn-solar" href="#contact">Demander un devis</a>
+      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="#services">Services</a>
+    <a href="#methode">Méthode</a>
+    <a href="#zone">Zone d'intervention</a>
+    <a href="#faq">FAQ</a>
+    <a href="tel:+33980803807">09 80 80 38 07</a>
+    <a href="#contact" class="btn btn-solar" style="margin-top:16px;justify-content:center;border:0">Demander un devis</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=80&auto=format&fit=crop" alt="Maison contemporaine éclairée à la tombée de la nuit">
+  <div class="wrap hero-in">
+    <p class="caption">Chauffage · Climatisation · Plomberie — Sud toulousain</p>
+    <h1 class="display-lg">Le bon climat, toute l'année.</h1>
+    <div class="hero-foot">
+      <p>KS Energie installe, répare et entretient vos équipements de chauffage, de climatisation et de plomberie, à Labarthe-sur-Lèze et alentour.</p>
+      <div class="hero-actions">
+        <a class="btn btn-ghost-w" href="#services">Nos services</a>
+        <a class="btn btn-ghost-w" href="tel:+33980803807">Appeler</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MONOGRAM ============ -->
+<section class="mono">
+  <div class="wrap">
+    <p class="caption" style="color:var(--steel)">Artisan installateur · Labarthe-sur-Lèze (31)</p>
+    <div class="mono-word rv" aria-hidden="true">KS</div>
+    <p class="sub rv">Trois métiers, un seul interlocuteur. De la pompe à chaleur au robinet qui fuit, une équipe qui connaît votre installation de bout en bout.</p>
+    <div class="mono-tags rv">
+      <span class="chip"><span class="dot" style="background:var(--canyon)"></span>Chauffage</span>
+      <span class="chip"><span class="dot" style="background:var(--sky)"></span>Climatisation</span>
+      <span class="chip"><span class="dot" style="background:var(--forest)"></span>Plomberie & sanitaire</span>
+    </div>
+    <div class="mono-actions rv">
+      <a class="btn btn-dark" href="#contact">Parler de mon projet</a>
+      <a class="btn btn-light" href="#methode">Comment on travaille</a>
+    </div>
+  </div>
+  <div class="mono-img">
+    <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=2400&q=80&auto=format&fit=crop" alt="Réseau de canalisations et vannes industrielles sur un mur de briques" loading="lazy">
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="caption">Nos services</p>
+        <h2 class="h-xl">Installer. Réparer.<br>Entretenir.</h2>
+      </div>
+      <p class="body">Neuf ou rénovation, maison ou local professionnel : on intervient sur l'ensemble de vos équipements thermiques et sanitaires.</p>
+    </div>
+
+    <div class="services">
+      <article class="svc rv">
+        <img src="https://images.unsplash.com/photo-1599696848652-f0ff23bc911f?w=1200&q=80&auto=format&fit=crop" alt="Salon chaleureux baigné de lumière douce" loading="lazy">
+        <div class="svc-top"><span class="chip"><span class="dot" style="background:var(--canyon)"></span>Chauffage</span><span class="svc-n">01</span></div>
+        <div>
+          <h3>Une chaleur maîtrisée.</h3>
+          <ul>
+            <li>Pompes à chaleur air/eau</li>
+            <li>Chaudières & radiateurs</li>
+            <li>Plancher chauffant</li>
+            <li>Entretien & dépannage</li>
+          </ul>
+          <a class="btn btn-ghost-w" href="#contact">Devis chauffage</a>
+        </div>
+      </article>
+
+      <article class="svc rv">
+        <img src="https://images.unsplash.com/photo-1617104678098-de229db51175?w=1200&q=80&auto=format&fit=crop" alt="Chambre calme et fraîche avec grande fenêtre" loading="lazy">
+        <div class="svc-top"><span class="chip"><span class="dot" style="background:var(--sky)"></span>Climatisation</span><span class="svc-n">02</span></div>
+        <div>
+          <h3>La fraîcheur, sans bruit.</h3>
+          <ul>
+            <li>Climatisation réversible</li>
+            <li>Mono-split & multi-split</li>
+            <li>Gainable</li>
+            <li>Mise en service & entretien</li>
+          </ul>
+          <a class="btn btn-ghost-w" href="#contact">Devis climatisation</a>
+        </div>
+      </article>
+
+      <article class="svc rv">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80&auto=format&fit=crop" alt="Salle de bain rénovée avec douche à l'italienne" loading="lazy">
+        <div class="svc-top"><span class="chip"><span class="dot" style="background:var(--forest)"></span>Plomberie</span><span class="svc-n">03</span></div>
+        <div>
+          <h3>L'eau, là où il faut.</h3>
+          <ul>
+            <li>Salles de bain & sanitaires</li>
+            <li>Chauffe-eau & ballon thermodynamique</li>
+            <li>Recherche & réparation de fuites</li>
+            <li>Réseaux d'eau neufs</li>
+          </ul>
+          <a class="btn btn-ghost-w" href="#contact">Devis plomberie</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="specs" style="margin-top:80px">
+      <div class="spec rv"><div class="spec-v">3<small>métiers</small></div><p class="spec-l">Chauffage, climatisation et plomberie, coordonnés par la même équipe.</p></div>
+      <div class="spec rv"><div class="spec-v">0<small>€</small></div><p class="spec-l">Visite technique et devis gratuits, sans engagement.</p></div>
+      <div class="spec rv"><div class="spec-v">1<small>interlocuteur</small></div><p class="spec-l">Le même contact du premier appel à la mise en service.</p></div>
+      <div class="spec rv"><div class="spec-v">31<small>Haute-Garonne</small></div><p class="spec-l">Basé à Labarthe-sur-Lèze, au cœur du Sud toulousain.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT : entretien ============ -->
+<section class="sec" style="background:var(--chalk)">
+  <div class="wrap split">
+    <div class="split-img rv">
+      <img src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?w=1400&q=80&auto=format&fit=crop" alt="Intérieur lumineux et confortable" loading="lazy">
+    </div>
+    <div class="rv">
+      <p class="caption">Contrat d'entretien</p>
+      <h2 class="h-xl">Un équipement entretenu dure plus longtemps.</h2>
+      <p class="body">Une pompe à chaleur ou une climatisation bien réglée consomme moins et tombe moins en panne. On passe une fois par an, on contrôle, on nettoie, on vous dit ce qui va et ce qui ne va pas.</p>
+      <ul class="checks">
+        <li><b>01</b>Contrôle complet et nettoyage des unités</li>
+        <li><b>02</b>Vérification de l'étanchéité et des pressions</li>
+        <li><b>03</b>Attestation d'entretien remise après chaque visite</li>
+        <li><b>04</b>Intervention prioritaire en cas de panne</li>
+      </ul>
+      <a class="btn btn-dark" href="#contact">Programmer un entretien</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BAND ============ -->
+<section class="band">
+  <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=2400&q=80&auto=format&fit=crop" alt="Robinetterie chromée en gros plan" loading="lazy">
+  <div class="wrap">
+    <h2 class="display rv" style="max-width:14ch">Une fuite, une panne ? On décroche.</h2>
+    <p class="sub rv">Dépannage plomberie, chauffage et climatisation dans le Sud toulousain. Appelez-nous, on vous dit tout de suite quand on peut passer.</p>
+    <div class="rv" style="margin-top:32px;display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn btn-ghost-w" href="tel:+33980803807">09 80 80 38 07</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHODE ============ -->
+<section class="sec" id="methode" style="background:var(--chalk)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="caption">Méthode</p>
+        <h2 class="h-xl">Quatre étapes,<br>zéro surprise.</h2>
+      </div>
+      <p class="body">Un devis clair, un chantier propre, une installation expliquée. C'est tout ce qu'on attend d'un artisan, et c'est ce qu'on fait.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="step-n">1</span><div><h4>Échange</h4><p>Vous nous décrivez votre besoin par téléphone ou via le formulaire. On vous rappelle rapidement.</p></div></div>
+      <div class="step rv"><span class="step-n">2</span><div><h4>Visite & devis</h4><p>On se déplace, on mesure, on conseille la solution adaptée à votre logement. Devis détaillé et gratuit.</p></div></div>
+      <div class="step rv"><span class="step-n">3</span><div><h4>Installation</h4><p>Pose soignée, chantier protégé et nettoyé. On respecte la date convenue.</p></div></div>
+      <div class="step rv"><span class="step-n">4</span><div><h4>Suivi</h4><p>Mise en service, prise en main expliquée, puis entretien et SAV dans la durée.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZONE ============ -->
+<section class="sec" id="zone">
+  <div class="wrap zone">
+    <div class="zone-map rv">
+      <svg viewBox="0 0 600 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g fill="none" stroke="#2c2c2c">
+          <circle cx="380" cy="270" r="60"/><circle cx="380" cy="270" r="120"/><circle cx="380" cy="270" r="190"/><circle cx="380" cy="270" r="270"/>
+        </g>
+        <path d="M80 60 C 200 140, 260 180, 380 270 S 520 380, 600 420" stroke="#3a3a3a" stroke-width="1.5" fill="none" stroke-dasharray="4 6"/>
+        <circle cx="300" cy="190" r="4" fill="#616161"/>
+        <text x="312" y="186" fill="#b8b8b8" font-size="12" font-family="Inter Tight, sans-serif">Toulouse</text>
+        <circle cx="380" cy="270" r="18" fill="#ffac00" opacity=".18"/>
+        <circle cx="380" cy="270" r="6" fill="#ffac00"/>
+        <text x="396" y="275" fill="#fff" font-size="13" font-weight="500" font-family="Inter Tight, sans-serif">Labarthe-sur-Lèze</text>
+        <circle cx="330" cy="320" r="4" fill="#616161"/>
+        <text x="270" y="338" fill="#b8b8b8" font-size="12" font-family="Inter Tight, sans-serif">Muret</text>
+      </svg>
+      <p class="caption">Zone d'intervention</p>
+      <h2 class="h-lg">Basés à Labarthe-sur-Lèze.</h2>
+    </div>
+    <div class="zone-list rv">
+      <div>
+        <p class="caption" style="color:var(--steel)">Communes desservies</p>
+        <div class="towns">
+          <span class="chip">Labarthe-sur-Lèze</span><span class="chip">Muret</span><span class="chip">Pins-Justaret</span>
+          <span class="chip">Eaunes</span><span class="chip">Lagardelle-sur-Lèze</span><span class="chip">Roques</span>
+          <span class="chip">Venerque</span><span class="chip">Vernet</span><span class="chip">Labarthe-Inard</span>
+          <span class="chip">Portet-sur-Garonne</span><span class="chip">Saubens</span><span class="chip">Toulouse Sud</span>
+        </div>
+        <p class="body">Votre commune n'apparaît pas ? Appelez-nous : on intervient dans tout le Sud toulousain.</p>
+      </div>
+      <div style="margin-top:24px"><a class="btn btn-ghost-d" href="tel:+33980803807">Vérifier ma commune</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="caption">Questions fréquentes</p><h2 class="h-xl">Bon à savoir.</h2></div></div>
+    <div class="faq">
+      <details><summary>Le devis est-il vraiment gratuit ?<span class="pm">+</span></summary><p>Oui. La visite technique et le devis sont gratuits et sans engagement. Vous recevez un chiffrage détaillé, poste par poste.</p></details>
+      <details><summary>Pompe à chaleur ou climatisation réversible : que choisir ?<span class="pm">+</span></summary><p>Une pompe à chaleur air/eau remplace votre chaudière et alimente radiateurs ou plancher chauffant. Une climatisation réversible (air/air) chauffe et rafraîchit pièce par pièce. Lors de la visite, on regarde votre logement et votre installation actuelle pour vous orienter vers la solution la plus pertinente.</p></details>
+      <details><summary>À quelle fréquence entretenir ma climatisation ou ma PAC ?<span class="pm">+</span></summary><p>Un entretien annuel est recommandé pour garder un bon rendement et prolonger la durée de vie de l'équipement. Certains équipements sont soumis à un contrôle obligatoire selon leur puissance : on vous dit ce qui s'applique à votre cas.</p></details>
+      <details><summary>Intervenez-vous pour les professionnels ?<span class="pm">+</span></summary><p>Oui, nous intervenons chez les particuliers comme dans les locaux professionnels : commerces, bureaux, petits bâtiments tertiaires.</p></details>
+      <details><summary>Puis-je bénéficier d'aides pour mon projet ?<span class="pm">+</span></summary><p>Selon votre situation et l'équipement choisi, des aides à la rénovation énergétique peuvent exister. Parlez-en lors de la visite : on vous indique les pistes à étudier pour votre projet.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="caption">Contact</p>
+      <h2 class="display">Parlons de votre projet.</h2>
+      <div class="contact-lines">
+        <a href="tel:+33980803807"><span>Téléphone</span>09 80 80 38 07</a>
+        <div><span>Adresse</span>2620 route du Plantaurel, 31860 Labarthe-sur-Lèze</div>
+        <div><span>Réponse</span>Rappel sous 24 h ouvrées</div>
+      </div>
+    </div>
+    <form id="f" novalidate>
+      <fieldset style="border:0;display:grid;gap:8px;margin-bottom:8px">
+        <legend style="font-size:12px;font-weight:500;color:var(--fog);margin-bottom:8px">Votre besoin</legend>
+        <div class="need">
+          <input type="radio" name="besoin" id="b1" value="Chauffage" checked><label for="b1">Chauffage</label>
+          <input type="radio" name="besoin" id="b2" value="Climatisation"><label for="b2">Climatisation</label>
+          <input type="radio" name="besoin" id="b3" value="Plomberie"><label for="b3">Plomberie</label>
+          <input type="radio" name="besoin" id="b4" value="Entretien / dépannage"><label for="b4">Entretien / dépannage</label>
+        </div>
+      </fieldset>
+      <div class="row">
+        <label>Nom<input name="nom" autocomplete="name" required></label>
+        <label>Téléphone<input name="tel" type="tel" autocomplete="tel" required></label>
+      </div>
+      <div class="row">
+        <label>E-mail<input name="email" type="email" autocomplete="email"></label>
+        <label>Commune<input name="ville" autocomplete="address-level2"></label>
+      </div>
+      <label>Votre projet<textarea name="msg" placeholder="Ex. : remplacement d'une chaudière fioul par une pompe à chaleur, maison de 110 m²…"></textarea></label>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:8px">
+        <button class="btn" type="submit" style="background:#fff;color:var(--graphite)">Envoyer ma demande</button>
+        <p class="form-note">Vos données servent uniquement à vous recontacter.</p>
+      </div>
+      <p class="sent" id="sent">Merci ! Votre demande a bien été envoyée. KS Energie vous rappelle très vite.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#top" class="logo"><span class="logo-mark" style="background:#fff;color:#000">KS</span> KS Energie</a>
+        <p style="margin-top:16px;max-width:320px">Installation, réparation et entretien : chauffage, climatisation, plomberie et sanitaire.</p>
+      </div>
+      <div class="foot-cols">
+        <div><h5>Services</h5><a href="#services">Chauffage</a><a href="#services">Climatisation</a><a href="#services">Plomberie</a><a href="#contact">Entretien</a></div>
+        <div><h5>Entreprise</h5><a href="#methode">Méthode</a><a href="#zone">Zone d'intervention</a><a href="#faq">FAQ</a></div>
+        <div><h5>Contact</h5><a href="tel:+33980803807">09 80 80 38 07</a><a href="#contact">Demande de devis</a></div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 KS Energie SARL · SIREN 109 895 052 · 2620 route du Plantaurel, 31860 Labarthe-sur-Lèze</span>
+      <span>Mentions légales · Politique de confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Menu mobile
+  const burger=document.querySelector('.burger'),mm=document.getElementById('mm');
+  burger.addEventListener('click',()=>{const o=mm.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
+
+  // Apparition au scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // Formulaire (démo — à brancher sur un service d'envoi : Formspree, Web3Forms, etc.)
+  document.getElementById('f').addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=e.target;
+    if(!f.nom.value.trim()||!f.tel.value.trim()){f.querySelector(!f.nom.value.trim()?'[name=nom]':'[name=tel]').focus();return}
+    document.getElementById('sent').style.display='block';f.reset();
+  });
+</script>
+</body>
+</html>
